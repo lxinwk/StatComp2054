@@ -2,11 +2,12 @@
 title: "Introduction to StatComp20054"
 author: "Xin Liu"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Introduction to StatComp20054}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output:
+  rmarkdown::html_vignette: default
+  html_document:
+    df_print: paged
+vignette: |
+  %\VignetteIndexEntry{Introduction to StatComp20054} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
 
 ## Overview
@@ -18,6 +19,7 @@ The other is the _blast_circlize_ for R. The circlize package is very powerful, 
 The data to be prepared is two data frames.
 The first is basic information about the genome, including
 ```{r}
+library(RIdeogram)#
 head(karyotype_dual_comparison)
 ```
 The second is the result of collinearity analysis
@@ -29,6 +31,10 @@ Understand the basic data input format, then we can convert the blast comparison
 
 ```{r}
 blast_RIdeogram <- function(df1,df2){
+library(RIdeogram)#
+library(magrittr)
+suppressPackageStartupMessages(library("dplyr"))
+library("rsvg")
 df3<-df2[,c(3,7,8,9,10)]
 df3$fill<-ifelse(df3$V3>90,"0080cc",
                  ifelse(df3$V3<80,"0ab276","e64e60"))
@@ -44,10 +50,6 @@ rsvg_pdf("blast_RIdeogram.svg","blast_RIdeogram.pdf")
 ```
 
 ```{r}
-library(RIdeogram)#
-library(magrittr)
-suppressPackageStartupMessages(library("dplyr"))
-library("rsvg")
 df1<-read.csv("df1.txt",stringsAsFactors = F)
 df2<-read.csv("output6.txt",header=F,sep=" ",stringsAsFactors = F)
 blast_RIdeogram(df1,df2) 
@@ -75,6 +77,9 @@ Drawing:
 
 ```{r}
 blast_circlize <- function(df,df1){
+suppressPackageStartupMessages(library(circlize))#RIdeogram,magrittr,dplyr,rsvg,circlize,RColorBrewer,ComplexHeatmap
+library(RColorBrewer)
+suppressPackageStartupMessages(library(ComplexHeatmap))
 col<-RColorBrewer::brewer.pal(6,"Paired")
 circos.par("start.degree" = 130)
 circos.initialize(factors = df$chr,x=df$x)

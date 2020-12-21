@@ -3,7 +3,7 @@
     "path": null,
     "project_path": null,
     "type": "r_source",
-    "hash": "657527426",
+    "hash": "0",
     "contents": "",
     "dirty": true,
     "created": 1608031769564.0,
@@ -20,6 +20,6 @@
     "collab_server": "",
     "source_window": "",
     "last_content_update": 1608535023366,
-    "read_only": true,
+    "read_only": false,
     "read_only_alternatives": []
 }

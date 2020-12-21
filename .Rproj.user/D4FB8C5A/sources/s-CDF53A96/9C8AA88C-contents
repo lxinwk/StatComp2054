@@ -4,6 +4,9 @@
 #' @param df 
 #' @param df1 
 #' @return a random sample of size
+#' @import RColorBrewer
+#' @import ComplexHeatmap
+#' @import circlize
 #' @export
 blast_circlize <- function(df,df1){
   col<-RColorBrewer::brewer.pal(6,"Paired")

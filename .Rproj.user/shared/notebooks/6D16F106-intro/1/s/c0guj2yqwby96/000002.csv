@@ -1,0 +1,5 @@
+"0","df<-data.frame(chr=c(rep(""chloroplast"",2),rep(""mitochondrial"",2)),"
+"0","               x=c(1,131478,1,444567),"
+"0","               y=c(0,1,0,1))"
+"0",""
+"0","df"
