@@ -1,5 +1,20 @@
 [
     {
+        "file": "E:/Rcpp/NEW/StatComp20054/src/rw_MetropolisC.cpp",
+        "file_last_write": 1607346884.0,
+        "definitions": [
+            {
+                "usr": "c:@F@rw_MetropolisC#d#d#I#",
+                "kind": 6,
+                "parent_name": "",
+                "name": "rw_MetropolisC(double, double, int)",
+                "file": "E:/Rcpp/NEW/StatComp20054/src/rw_MetropolisC.cpp",
+                "line": 4,
+                "column": 6
+            }
+        ]
+    },
+    {
         "file": "E:/Rcpp/StatComp-2020-12-16/StatComp20054/src/rw_MetropolisC.cpp",
         "file_last_write": 1607346884.0,
         "definitions": [

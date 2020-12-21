@@ -1,13 +1,12 @@
----
+----
 title: "Introduction to StatComp20054"
 author: "Xin Liu"
 date: "`r Sys.Date()`"
-output:
-  rmarkdown::html_vignette: default
-  html_document:
-    df_print: paged
-vignette: |
-  %\VignetteIndexEntry{Introduction to StatComp20054} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to StatComp20054}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ## Overview
@@ -20,6 +19,10 @@ The data to be prepared is two data frames.
 The first is basic information about the genome, including
 ```{r}
 library(RIdeogram)#
+
+```
+
+```{r}
 head(karyotype_dual_comparison)
 ```
 The second is the result of collinearity analysis
@@ -31,6 +34,11 @@ Understand the basic data input format, then we can convert the blast comparison
 
 ```{r}
 blast_RIdeogram <- function(df1,df2){
+library(RIdeogram)
+data(karyotype_dual_comparison)
+library(magrittr)
+suppressPackageStartupMessages(library("dplyr"))
+library("rsvg")
 df3<-df2[,c(3,7,8,9,10)]
 df3$fill<-ifelse(df3$V3>90,"0080cc",
                  ifelse(df3$V3<80,"0ab276","e64e60"))
@@ -46,10 +54,6 @@ rsvg_pdf("blast_RIdeogram.svg","blast_RIdeogram.pdf")
 ```
 
 ```{r}
-library(RIdeogram)#
-library(magrittr)
-suppressPackageStartupMessages(library("dplyr"))
-library("rsvg")
 df1<-read.csv("df1.txt",stringsAsFactors = F)
 df2<-read.csv("output6.txt",header=F,sep=" ",stringsAsFactors = F)
 blast_RIdeogram(df1,df2) 
@@ -59,6 +63,14 @@ blast_RIdeogram(df1,df2)
 2.Use the R language package circlize to visualize the blast double sequence alignment results
 
 Prepare the data to draw the outermost circle to show the part of the two sequences: df
+
+```{r}
+suppressPackageStartupMessages(library(circlize))#RIdeogram,magrittr,dplyr,rsvg,circlize,RColorBrewer,ComplexHeatmap
+library(RColorBrewer)
+suppressPackageStartupMessages(library(ComplexHeatmap))
+```
+
+
 ```{r}
 df<-data.frame(chr=c(rep("chloroplast",2),rep("mitochondrial",2)),
                x=c(1,131478,1,444567),
@@ -66,20 +78,18 @@ df<-data.frame(chr=c(rep("chloroplast",2),rep("mitochondrial",2)),
 
 df
 ```
+
 Then read the output of blast: df1
 
 ```{r}
-df1<-read.csv("output6.txt",stringsAsFactors = F,header=F,sep=" ")
-df1
+df3<-read.csv("output6.txt",stringsAsFactors = F,header=F,sep=" ")
+df3
 ```
 
 Drawing:
 
 ```{r}
 blast_circlize <- function(df,df1){
-suppressPackageStartupMessages(library(circlize))#RIdeogram,magrittr,dplyr,rsvg,circlize,RColorBrewer,ComplexHeatmap
-library(RColorBrewer)
-suppressPackageStartupMessages(library(ComplexHeatmap))
 col<-RColorBrewer::brewer.pal(6,"Paired")
 circos.par("start.degree" = 130)
 circos.initialize(factors = df$chr,x=df$x)
@@ -117,10 +127,7 @@ draw(lgd_list_vertical, x = unit(10, "mm"),
 }
 ```
 
+
 ```{r}
 blast_circlize(df,df1)
 ```
-
-
-
-
