@@ -1,3 +1,0 @@
-"0","df1<-read.csv(""df1.txt"",stringsAsFactors = F)"
-"0","df2<-read.csv(""output6.txt"",header=F,sep="" "",stringsAsFactors = F)"
-"0","blast_RIdeogram(df1,df2) "

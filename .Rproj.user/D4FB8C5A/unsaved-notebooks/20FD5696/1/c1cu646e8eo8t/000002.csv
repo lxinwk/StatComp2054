@@ -1,0 +1,8 @@
+"0","df1<-data.frame(Chr=c(""I"",""I""),"
+"0","               Start=c(1,1),"
+"0","               End=c(131478,444567),"
+"0","               fill=c(""FF9D1E"",""FF9D1E""),"
+"0","              species=c(""chloroplast"",""mitochondrion""),"
+"0","              size=c(12,12),"
+"0","              color=c(252525,252525))"
+"0","df1"

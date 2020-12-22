@@ -1,3 +1,0 @@
-Chr,Start,End,fill,species,size,color
-I,1,131478,FF9D1E,chloroplast,12,252525
-I,1,444567,FF9D1E,mitochondrion,12,252525

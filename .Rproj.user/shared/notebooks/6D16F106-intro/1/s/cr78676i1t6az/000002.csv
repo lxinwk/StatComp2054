@@ -1,2 +1,2 @@
-"0","df1<-read.csv(""output6.txt"",stringsAsFactors = F,header=F,sep="" "")"
-"0","df1"
+"0","df3 <-df2"
+"0","df3"
